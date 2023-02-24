@@ -1,1 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Document</title>
 
+<style>
+/*
+.hidden{
+  display: none;
+}
+.show{
+  display: inline;
+}
+
+
+*/
+</style>
+</head>
+<body>
+
+<div id="economy" style="display: none;">
+    <div id="inf">
+    <div id="money">0gl</div><div id="income">income</div>
+    <div id="population"></div>
+    <div id="freepops"></div>
+  </div>
+  <div id="buildings">
+    <div id="farm" class="building">
+      **farm**<br>
+      Every farms gives you additional gold per day but it needs pops to work at it, it costs 200Gl 20 free pops<br>
+      <input type="button" value="Build" onclick="Build(1)"><br>
+      Demolishing a bulding gives you 40% amount of money that you pay for it.<br>
+      <input type="button" value="Demolish" onclick="Demolish(1)">
+    </div>
+    
+    <div id="house" class="building">
+      **house**<br>
+      Every house additional 25 max population, but be aware, it costs 100Gl and 1 gl per day to mentain<br>
+      <input type="button" value="Build" onclick="Build(2)"><br>
+      Demolishing a bulding gives you 40% amount of money that you pay for it.<br>
+      <input type="button" value="Demolish" onclick="Demolish(2)">
+    </div>
+    <div id="mine" class="building">
+      **mine**<br>
+      To build a mine you have to have a resorce wein (you can get it by concwest), it costs 500Gl and 50 free pops.<br>
+      Mines give you additional 7 gold per day by exporting ore<br>
+      <input type="button" value="Build" onclick="Build(3)"><br>
+      Demolishing a bulding gives you 40% amount of money that you pay for it.<br>
+      <input type="button" value="Demolish" onclick="Demolish(3)">
+    </div>
+    <div id="metalwork" class="building">
+      **metalwork**<br>
+      You can build metalworks after you build mine because it takes ore to work, it costs 1500Gl and 40 free pops.<br>
+      Metalworks give you additional 17 gold per day by smelting ore and smithing<br>
+      <input type="button" value="Build" onclick="Build(4)"><br>
+      Demolishing a bulding gives you 40% amount of money that you pay for it.<br>
+      <input type="button" value="Demolish" onclick="Demolish(4)">
+    </div>
+    <div id="workshop" class="building">
+      **workshop**<br>
+      You can build one workshow for every 75 pops, it costs 1000Gl and 30 free pops.<br>
+      Workshops give you additional 17 gold per day by creating tools and things for your people<br>
+      <input type="button" value="Build" onclick="Build(5)"><br>
+      Demolishing a bulding gives you 40% amount of money that you pay for it.<br>
+      <input type="button" value="Demolish" onclick="Demolish(5)">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!--
+  <input type="button" value="o 1" onclick="mod(1)">
+  <input type="button" value="o 2"  onclick="mod(2)">
+  <input type="button"  value="o 4" onclick="mod(4)">
+  <input type="button"  value="o 8" onclick="mod(8)">
+  <br>
+
+  <input type="button" id="b1" value="o 50" onclick="moremaxpopulation(1);" class="hidden">
+  <input type="button" id="b2" value="o 200" onclick="moremaxpopulation(2);" class="hidden">
+  <input type="button" id="b3" value="o 500" onclick="moremaxpopulation(3);" class="hidden">
+  <input type="button" id="b4" value="o 1000" onclick="moremaxpopulation(4);"class="hidden">
+-->
+<!--Java-->
+  <script>
+     
+
+
+    let moneyEl = document.getElementById('money');
+    let incomeE1 = document.getElementById('income');
+    let populationEl=document.getElementById('population');
+    let freepopsE1=document.getElementById('freepops');
+    let population=50;
+    let maxpopulation=75;
+    
+    let money = 200;
+    let modifier=1;
+    let popmodifier;
+  popmodifier=population/10;
+  popmodifier=parseInt(popmodifier);
+    var m1=1; 
+    var m2=1;
+    var m4=1;
+    var m8=1;
+    var mx1=1; 
+    var mx2=1;
+    var mx3=1;
+    var mx4=1;
+
+    let taxmod=0.3;
+    let taxes=population/5*taxmod;
+    let farmsAmount=2;
+    let houseAmount=3;
+    let demolishingMod=0.4;
+
+    let freepops=population-20*farmsAmount;
+    let wokingPops=20*farmsAmount;
+    //industrial buildings 
+    let mineAmount;
+      let ore;
+      let weins;
+    let metalworksAmount;
+    let workshopsAmount;
+    let baraksAmount;
+
+function mod(temp){
+
+switch (temp) {
+  case 1:
+  if((m1*10)<=money){
+  modifier+=temp;
+  money=money-(m1*10);
+  m1++;
+ 
+}
+  break;
+case 2:
+if((m2*20)<=money){
+  modifier+=temp;
+  money=money-(m2*20);
+  m2++;
+ 
+}
+break;
+case 4:
+if((m4*40)<=money){
+  modifier+=temp;
+  money=money-(m4*40);
+  m4++;
+
+}
+break;
+case 8:
+if((m8*80)<=money){
+  modifier+=temp;
+  money=money-(m8*80);
+  m8++;
+ 
+}
+break;
+
+  default:
+    break;
+}
+}
+//BUDYNKI//////////////////////////////////////////////////////////////////////////////////
+function Build(id){
+    if(freepops>=20&&maney>=200&&id==1){
+      modifier+=2;
+      farmsAmount++;
+      freepops-=20;
+      money-=200;
+    }
+    else if(money>100&&id==2){
+      modifier-=1;
+      houseAmount++;
+      maxpopulation+=25;
+      money-=100;
+    }
+    else if(money>500&&weins>0&&id==3){
+      if(ore<0&&metalworksAmount>mineAmount){
+        modifier+=20-3;
+      }
+      modifier+=7;
+      mineAmount++;
+      freepops-=50;
+      money-=500;
+      weins--;      
+      ore++;
+    }
+    else if(money>1500&&ore>0&&id==4){
+      modifier+=20-3;
+      metalworksAmount++;
+      freepops-=40;
+      ore--;
+      money-=1500;
+    }
+    else if(money>1000&&population>75*workshopAmount&&id==5){
+      modifier+=10;
+      workshopAmount++;
+      freepops-=30;
+      money-=1000;
+    }
+    wokingPops=population-freepops;
+}
+function Demolish(id){
+    if(farmsAmount>0&&id==1){
+      modifier-=2;
+      farmsAmount--;
+      freepops+=20;
+      money+=200*demolishingMod;
+    }
+    else if(farmsAmount>0&&id==2){
+      modifier+=1;
+      houseAmount--;
+      maxpopulation-=25;
+      money+=100*demolishingMod;
+    }
+    else if(mineAmount>0&&id==3){
+      modifier-=7;
+      mineAmount--;
+      freepops+=50;
+      money+=500*demolishingMod;
+      weins++;
+      ore--;
+      if(ore<0){
+        alert("too few ore, we can't suply metalworks");
+        modifier-=20-3;
+      }
+    }
+    else if(mineAmount>0&&ore>0&&id==4){
+      modifier-=20-3;
+      metalworksAmount--;
+      freepops+=40;
+      ore++;
+      money+=1500*demolishingMod;
+    }
+    else if(workshopAmount>0&&id==5){
+      modifier-=10;
+      workshopAmount--;
+      freepops+=30;
+      money+=1000*demolishingMod;
+    }
+    wokingPops=population-freepops;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function moremaxpopulation(temp) {
+  switch (temp) {
+  case 1:
+  if((mx1*50)<=money){
+  maxpopulation+=50;
+  money=money-(mx1*25);
+  mx1++;
+ 
+}
+  break;
+case 2:
+if((mx2*200)<=money){
+  maxpopulation+=200;
+  money=money-(mx2*100);
+  mx2++;
+ 
+ 
+}
+break;
+case 3:
+if((mx3*500)<=money){
+  maxpopulation+=500;
+  money=money-(mx3*250);
+  mx3++;
+ 
+}break;
+case 4:
+if((mx4*50)<=money){
+  maxpopulation+=1000;
+  money=money-(mx4*500);
+  mx4++;
+ 
+}break;
+
+  default:
+    break;
+}
+
+}
+
+let interval = setInterval(() =>  {
+      money+=modifier+taxes; 
+    }, 1000);
+ 
+
+
+
+
+
+let interval2 = setInterval(() =>  {
+  population+=Math.random()*popmodifier;
+  population=parseInt(population);
+    
+     population+=popmodifier;
+     freepops+=popmodifier;
+    if(population > maxpopulation) {
+        population=maxpopulation;
+      
+    }
+    if(freepops>population-wokingPops){
+      freepops=population-wokingPops;
+    }
+    }, 10000);
+
+setInterval(() => {
+  moneyEl.innerText =  (money)+' Gl';
+  incomeE1.innerText =  (modifier+taxes)+' Gl per day';
+  populationEl.innerText =  (population)+'/'+maxpopulation;
+  freepopsE1.innerText =  (freepops)+' free pops';
+}, 1000);
+
+/*
+if(population>=100&&population<=499){
+  document.getElementById("b1").className="show";
+}
+if(population>=500&&population<=999){
+  document.getElementById("b2").className="show";
+}
+if(population>=1000&&population<=9999){
+  document.getElementById("b3").className="show";
+}
+if(population>=10000){    
+  document.getElementById("b4").className="show";
+}
+
+  
+*/
+
+  
+
+
+   
+
+
+
+
+
+
+
+        </script>
+
+</body>
+</html>
