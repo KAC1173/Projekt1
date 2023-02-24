@@ -1,3 +1,17 @@
-.button{
-    border: 4px, #666265,solid;
+body{
+    background-color: black;
+    color: white;
+}
+.building{
+    border:3px grey solid;
+    padding: 10px;
+    
+}
+#inf{
+    float:left;
+    width: 40%;
+}
+#buildings{
+    
+    float:right;
 }
