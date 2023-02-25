@@ -5,71 +5,82 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Document</title>
-
-<style>
-/*
-.hidden{
-  display: none;
-}
-.show{
-  display: inline;
-}
-
-
-*/
-</style>
 </head>
 <body>
 
-<div id="economy" style="display: none;">
-    <div id="inf">
+<div id="economy">
+  <div id="inf">
     <div id="money">0gl</div><div id="income">income</div>
     <div id="population"></div>
     <div id="freepops"></div>
+    <div id="army"></div>
+    
+    <input type="button" value="Attack!!" onclick="defense(random()*(1000-100)-100,0.2)"><br>
+  </div>
+  <div id="tab">
+    <ul><li onClick="myFunction(1)">Ekonomia</li><li onClick="myFunction(2)">nr2</li></ul>
   </div>
   <div id="buildings">
-    <div id="farm" class="building">
-      **farm**<br>
-      Every farms gives you additional gold per day but it needs pops to work at it, it costs 200Gl 20 free pops<br>
-      <input type="button" value="Build" onclick="Build(1)"><br>
-      Demolishing a bulding gives you 40% amount of money that you pay for it.<br>
-      <input type="button" value="Demolish" onclick="Demolish(1)">
+    <div id="types">
+      <ul><li onClick="typesBuildings(1)">people</li><li onClick="typesBuildings(2)">industry</li><li onClick="typesBuildings(3)">military</li></ul>
+      
     </div>
-    
-    <div id="house" class="building">
-      **house**<br>
-      Every house additional 25 max population, but be aware, it costs 100Gl and 1 gl per day to mentain<br>
-      <input type="button" value="Build" onclick="Build(2)"><br>
-      Demolishing a bulding gives you 40% amount of money that you pay for it.<br>
-      <input type="button" value="Demolish" onclick="Demolish(2)">
+    <div id="people">
+      <div id="farm" class="building1">
+        **farm**<br>
+        Every farms gives you additional gold per day but it needs pops to work at it, it costs 200Gl 20 free pops<br>
+        <input type="button" value="Build" onclick="Build(1)"><br>
+        Demolishing a bulding gives you 40% amount of money that you pay for it.<br>
+        <input type="button" value="Demolish" onclick="Demolish(1)">
+      </div>
+      
+      <div id="house" class="building2">
+        **house**<br>
+        Every house additional 25 max population, but be aware, it costs 100Gl and 1 gl per day to mentain<br>
+        <input type="button" value="Build" onclick="Build(2)"><br>
+        Demolishing a bulding gives you 40% amount of money that you pay for it.<br>
+        <input type="button" value="Demolish" onclick="Demolish(2)">
+      </div>
     </div>
-    <div id="mine" class="building">
-      **mine**<br>
-      To build a mine you have to have a resorce wein (you can get it by concwest), it costs 500Gl and 50 free pops.<br>
-      Mines give you additional 7 gold per day by exporting ore<br>
-      <input type="button" value="Build" onclick="Build(3)"><br>
-      Demolishing a bulding gives you 40% amount of money that you pay for it.<br>
-      <input type="button" value="Demolish" onclick="Demolish(3)">
+    <div id="industrial" style="display: none;">
+      <div id="mine" class="building1">
+        **mine**<br>
+        To build a mine you have to have a resorce wein (you can get it by concwest), it costs 500Gl and 50 free pops.<br>
+        Mines give you additional 7 gold per day by exporting ore<br>
+        <input type="button" value="Build" onclick="Build(3)"><br>
+        Demolishing a bulding gives you 40% amount of money that you pay for it.<br>
+        <input type="button" value="Demolish" onclick="Demolish(3)">
+      </div>
+      <div id="metalwork" class="building2">
+        **metalwork**<br>
+        You can build metalworks after you build mine because it takes ore to work, it costs 1500Gl and 40 free pops.<br>
+        Metalworks give you additional 17 gold per day by smelting ore and smithing<br>
+        <input type="button" value="Build" onclick="Build(4)"><br>
+        Demolishing a bulding gives you 40% amount of money that you pay for it.<br>
+        <input type="button" value="Demolish" onclick="Demolish(4)">
+      </div>
+      <div id="workshop" class="building1">
+        **workshop**<br>
+        You can build one workshow for every 75 pops, it costs 1000Gl and 30 free pops.<br>
+        Workshops give you additional 17 gold per day by creating tools and things for your people<br>
+        <input type="button" value="Build" onclick="Build(5)"><br>
+        Demolishing a bulding gives you 40% amount of money that you pay for it.<br>
+        <input type="button" value="Demolish" onclick="Demolish(5)">
+      </div>
     </div>
-    <div id="metalwork" class="building">
-      **metalwork**<br>
-      You can build metalworks after you build mine because it takes ore to work, it costs 1500Gl and 40 free pops.<br>
-      Metalworks give you additional 17 gold per day by smelting ore and smithing<br>
-      <input type="button" value="Build" onclick="Build(4)"><br>
-      Demolishing a bulding gives you 40% amount of money that you pay for it.<br>
-      <input type="button" value="Demolish" onclick="Demolish(4)">
-    </div>
-    <div id="workshop" class="building">
-      **workshop**<br>
-      You can build one workshow for every 75 pops, it costs 1000Gl and 30 free pops.<br>
-      Workshops give you additional 17 gold per day by creating tools and things for your people<br>
-      <input type="button" value="Build" onclick="Build(5)"><br>
-      Demolishing a bulding gives you 40% amount of money that you pay for it.<br>
-      <input type="button" value="Demolish" onclick="Demolish(5)">
-    </div>
+    <div id="military" style="display: none;">      
+      <div id="barracks" class="building1">
+      **barracks**
+      <input type="button" value="Build" onclick="Build(6)">
+      <input type="button" value="Demolish" onclick=" Demolish(6)" >
+      </div>
+    </div> 
   </div>
+  
 </div>
-
+<div id="nr2" style="display: none;">
+  wqooooooooooooooooooooooooooooooooooojidjiojdwiqojiwoqjiqwjdoqijdiwqjiwdjqojdoqij
+</div>
 
 
 
@@ -95,12 +106,18 @@
     let incomeE1 = document.getElementById('income');
     let populationEl=document.getElementById('population');
     let freepopsE1=document.getElementById('freepops');
-    let population=50;
+    let armyEl=document.getElementById('army');
+    let population=500;
     let maxpopulation=75;
     
-    let money = 200;
+    let money = 5000;
     let modifier=1;
     let popmodifier;
+
+
+
+
+
   popmodifier=population/10;
   popmodifier=parseInt(popmodifier);
     var m1=1; 
@@ -121,14 +138,57 @@
     let freepops=population-20*farmsAmount;
     let wokingPops=20*farmsAmount;
     //industrial buildings 
-    let mineAmount;
-      let ore;
-      let weins;
-    let metalworksAmount;
-    let workshopsAmount;
-    let baraksAmount;
+    let mineAmount=0;
+      let ore=0;
+      let weins=1;
+    let metalworksAmount=0;
+    let workshopsAmount=0;
+    let baraksAmount=0;
+    //warfare    
+    let army=0;
+    let maxarmy=0;
+    let barracksamount=0;
+    //let armygain=Math.random()*(5*barracksamount);
 
-function mod(temp){
+///0///
+function myFunction(id) {
+  var economy = document.getElementById("economy");
+  var nr2 = document.getElementById("nr2");
+  switch(id){
+    case 1:
+      economy.style.display = "block";
+      nr2.style.display = "none";
+    break;
+    case 2:
+      nr2.style.display = "block";
+      economy.style.display = "none";
+    break;
+  }
+} 
+function typesBuildings(id){
+  var people = document.getElementById("people");
+  var industrial = document.getElementById("industrial");
+  var military=document.getElementById("military");
+  switch(id){
+    case 1:
+      people.style.display = "block";
+      industrial.style.display = "none";
+      military.style.display = "none";
+    break;
+    case 2:
+      people.style.display = "none";
+      industrial.style.display = "block";
+      military.style.display = "none";
+    break;
+    case 3:
+      people.style.display = "none";
+      industrial.style.display = "none";
+      military.style.display = "block";
+    break;
+  }
+}
+///////
+  function mod(temp){
 
 switch (temp) {
   case 1:
@@ -170,7 +230,7 @@ break;
 }
 //BUDYNKI//////////////////////////////////////////////////////////////////////////////////
 function Build(id){
-    if(freepops>=20&&maney>=200&&id==1){
+    if(freepops>=20&&money>=200&&id==1){
       modifier+=2;
       farmsAmount++;
       freepops-=20;
@@ -200,12 +260,22 @@ function Build(id){
       ore--;
       money-=1500;
     }
-    else if(money>1000&&population>75*workshopAmount&&id==5){
+    else if(money>1000&&population>75*workshopsAmount&&id==5){
+      alert(75*workshopsAmount);
       modifier+=10;
-      workshopAmount++;
+      workshopsAmount++;
       freepops-=30;
       money-=1000;
     }
+    else if(money>1000&&freepops>20&&id==6){
+      modifier-=10;
+      baraksAmount++;
+      freepops-=20;
+      money-=1000;
+      maxarmy+=50;
+    }
+
+  
     wokingPops=population-freepops;
 }
 function Demolish(id){
@@ -246,7 +316,92 @@ function Demolish(id){
       freepops+=30;
       money+=1000*demolishingMod;
     }
+    if(baraksAmount>0&&id==6){
+      freepops+=20;
+      maxarmy-=50;
+      baraksAmount--;
+      money+=1000*demolishingMod;
+    }
     wokingPops=population-freepops;
+}
+//warfare//////////////////////////
+let modDef=0.1;
+let destruction;
+let demMod=demolishingMod;
+let terain=1;
+let amountOfAttacks=0;
+let timeToLastAttack=0;
+let straty;
+
+let tab=new Array(5);
+function wypisz( loops=1){
+  for(let i=1;i<=loops;i++){
+  switch(tab[i]){
+    case 1:
+      return "farm ";
+    break;
+    case 2:
+      return "house ";
+    break;
+    case 3:
+      return "mine ";
+    break;
+    case 4:
+      return "metalworks ";
+    break;
+    case 5:
+      return "workshop ";
+    break;
+    case 6:
+      return "barraks ";
+    break;
+  }
+}
+}
+function defense(armiaW,modOfW){
+
+  let j=0;
+  demolishingMod=0.1;
+  amountOfAttacks++;
+  timeToLastAttack=2;
+  if(armia+armia*modDef>armiaW+armiaW*modOfW){
+    
+    straty=armia*(random()* (0.70 - 0.10) + 0.10)+armia*modDef/2;
+    armia-=straty;
+    destruction=random()*(0.3-0.0)+0.0-modDef;    
+    for(let i=0.1;i<=destruction;i+=0.1){
+      Demolish(tab[j]=random()*(6-1)+1);
+      j++;
+    }
+    alert("You were victorius, you lost "+straty+" army and "+(destruction*20)+" buildings in it "+wypisz(destruction*10));
+    
+    demolishingMod=demMod;
+  }else{
+    armia-=armia*(random()* (1.00 - 0.30) + 0.30)+armia*modDef/2;
+    destruction=random()*(0.5-0.2)+0.2-modDef;    
+    for(let i=0.1;i<=destruction;i+=0.1){
+      Demolish(tab[j]=random()*(6-1)+1);
+      j++;
+    }
+    alert("You were defeted, you lost "+straty+" army and "+(destruction*20)+" buildings in it "+wypisz(destruction*10));
+    demolishingMod=demMod;
+  }
+}
+function atack(armiaW,modOfW){
+  demolishingMod=0.1;
+  let Weins;
+  let Money;
+  if(armia+armia*modDef>armiaW+armiaW*modOfW){
+    straty=armia*(random()* (0.70 - 0.10) + 0.10)+armia*modDef/2;
+    armia-=straty;
+    terain++;
+    money+=Money=random()*(3000-1000)+1000;
+    weins+=Weins=random()*(2-0)+0;
+    alert("You were victorius, you lost "+straty+" army and get "+Money+"Gl, your people find "+Weins+" weins in new land.");
+  }else{
+    armia-=armia*(random()* (1.00 - 0.30) + 0.30)+armia*modDef/2;
+    alert("You were defeted, you lost "+straty+" army");
+  }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function moremaxpopulation(temp) {
@@ -292,12 +447,6 @@ if((mx4*50)<=money){
 let interval = setInterval(() =>  {
       money+=modifier+taxes; 
     }, 1000);
- 
-
-
-
-
-
 let interval2 = setInterval(() =>  {
   population+=Math.random()*popmodifier;
   population=parseInt(population);
@@ -313,13 +462,29 @@ let interval2 = setInterval(() =>  {
     }
     }, 10000);
 
+
+let interval3= setInterval(() => {
+  
+  
+  if(army<maxarmy&&baraksAmount>0){
+  army +=parseInt(Math.random() * ((5*baraksAmount) - baraksAmount) + baraksAmount);
+  }
+}, 10000);
+    
+
 setInterval(() => {
   moneyEl.innerText =  (money)+' Gl';
   incomeE1.innerText =  (modifier+taxes)+' Gl per day';
   populationEl.innerText =  (population)+'/'+maxpopulation;
   freepopsE1.innerText =  (freepops)+' free pops';
+armyEl.innerText=(army)+'/'+maxarmy+' amount of troops ';
 }, 1000);
-
+let interva4 = setInterval(() =>  {
+      if(timeToLastAttack<=0&&random()*(100-10)+10>=50&&money>=4000||modifier>=100){
+        defense(random()*(1000-100)-100,0.2);
+      }
+      timeToLastAttack--;
+    }, 1800000);
 /*
 if(population>=100&&population<=499){
   document.getElementById("b1").className="show";
